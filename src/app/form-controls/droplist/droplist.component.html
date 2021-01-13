@@ -1,0 +1,23 @@
+<!--<mat-form-field appearance="legacy">
+    <input [name]="name"          
+     [(ngModel)]="value" 
+     [type]="type" 
+     [required]="required"
+     [(placeholder)] = "placeholder">
+</mat-form-field>
+-->
+<div>
+    <button type="button">{{placeholder}}</button>
+    <button type="button" (click) = "toggleOpen();"> 
+        <span>Toggle Dropdown</span>
+    </button>
+    <div *ngIf="isOpen" aria-labelledby="dropdownMenuButton">        
+        <button type="button" *ngFor="let elem of list"
+            [ngClass]="{'active':elem.value === value}"
+            (click)="valueSelect(elem);">{{elem.value}}></button>
+    </div>
+    <div *ngIf="!list">Empty</div>
+    <p *ngIf="_value">{{_value.value}}</p>
+    <p *ngIf="!isOpen">Opened</p>
+    <p *ngIf="isOpen">Not opened</p>
+</div>

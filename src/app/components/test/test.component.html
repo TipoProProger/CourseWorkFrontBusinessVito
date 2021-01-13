@@ -1,0 +1,11 @@
+<form #f="ngForm">
+    <div>
+        <droplist name="droplist" 
+          placeholder="fuck"
+          type="text" 
+          [required]="true"
+          [list]="data"
+          [(ngModel)]="choosen">
+        </droplist>
+    </div>
+</form>
