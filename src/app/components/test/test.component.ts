@@ -12,9 +12,9 @@ export class TestComponent implements OnInit {
   @ViewChild('f', {static: true}) form;
 
   public data: ListElement[] = [
-      {id:1, value:"fuck1"},
-      {id:2, value:"fuck2"},
-      {id:3, value:"fuckToYou"},
+      {id:1, value:"test1"},
+      {id:2, value:"test2"},
+      {id:3, value:"testToYou"},
   ];
   public choosen: ListElement;
 
