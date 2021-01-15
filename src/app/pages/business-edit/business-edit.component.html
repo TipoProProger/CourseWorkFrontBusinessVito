@@ -1,0 +1,187 @@
+<div *ngIf='business'>
+    <form #businessForm="ngForm" novalidate>
+        <mat-grid-list cols="3" rowHeight="70px">
+            <mat-grid-tile>
+                <input-field name="shortName" label="Краткое наименование" 
+                    placeholder="название" type="text" [required]="true" 
+                    [(ngModel)]="business.shortName">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="okfs" label="ОКФС" 
+                    placeholder="окфс" [required]="true"
+                    [(ngModel)]="business.okfs">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="amountWorkers" label="Численность"
+                    placeholder="Введите количество сотрудников" [required]="false"
+                    [(ngModel)]="business.businessExtended.amountWorkers">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="fullName" label="Полное наименование"
+                    placeholder="Введите полное наименование" [required]="true"
+                    [(ngModel)]="business.fullName">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="ogrn" label="ОГРН"
+                    placeholder="Введите номер ОГРН" [required]="true"
+                    [(ngModel)]="business.ogrn">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="mainActivity" label="Вид деят-ти"
+                    placeholder="Введите вид деятельности" [required]="false"
+                    [(ngModel)]="business.businessExtended.mainActivity">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="cost" label="Цена" 
+                    placeholder="Введите стоимость бизнеса" [required]="true"
+                    [(ngModel)]="business.cost">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="inn" label="ИНН"
+                    placeholder="Введите ИНН" [required]="true"
+                    [(ngModel)]="business.inn">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="taxAgency" label="Налоговый орган"
+                    placeholder="Введите налоговый орган" [required]="false"
+                    [(ngModel)]="business.taxAgency">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="telephone" label="Телефон предприятия"
+                    placeholder="Введите телевон предприятия" [required]="false"
+                    [(ngModel)]="business.businessExtended.telephone">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="okato" label="ОКАТО"
+                    placeholder="Введите ОКАТО" [required]="true"
+                    [(ngModel)]="business.okato">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="founders" label="Учредители"
+                    placeholder="Введите учредителей" [required]="false"
+                    [(ngModel)]="business.businessExtended.founders">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="busemail" label="Email предприятия"
+                    placeholder="Введите email" [required]="false"
+                    [(ngModel)]="business.businessExtended.busemail">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="kpp" label="КПП"
+                    placeholder="Введите КПП" [required]="false"
+                    [(ngModel)]="business.businessExtended.kpp">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="taxes" label="Налоги"
+                    placeholder="Введите налоги" [required]="false"
+                    [(ngModel)]="business.businessExtended.taxes">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="site" label="Сайт" 
+                    placeholder="Введите сайт" [required]="false"
+                    [(ngModel)]="business.businessExtended.site">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="okpo" label="ОКПО" 
+                    placeholder="Введите ОКПО" [required]="false"
+                    [(ngModel)]="business.businessExtended.okpo">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="profit" label="Прибыль за год"
+                    placeholder="Введите прибыль за год" [required]="true"
+                    [(ngModel)]="business.businessExtended.profit">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="okopf" label="ОКОПФ"
+                    placeholder="Введите ОКОПФ" [required]="true"
+                    [(ngModel)]="business.okopf">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="oktmo" label="ОКТМО"
+                    placeholder="Введите ОКТМО" [required]="false"
+                    [(ngModel)]="business.businessExtended.oktmo">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="taxDebt" label="Налог. задолж-ть"
+                    placeholder="Введите налоговую задолжность" [required]="true"
+                    [(ngModel)]="business.taxDebt">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="adress" label="Юридический адрес"
+                    placeholder="Введите юридический адрес" [required]="true"
+                    [(ngModel)]="business.businessExtended.adress">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="regDate" label="Дата регистрации"
+                    placeholder="Введите дату регистрации" [required]="false" 
+                    [(ngModel)]="business.businessExtended.regDate">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="courtCases" label="Судебные дела"
+                    placeholder="Введите количество судебных дел" [required]="true"
+                    [(ngModel)]="business.courtCases">
+                </input-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <input-field name="authorizedCapital" label="Уставной капитал"
+                    placeholder="Введите уставной капитал" [required]="true"
+                    [(ngModel)]="business.businessExtended.authorizedCapital">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="director" label="Руководитель"
+                    placeholder="Введите ФИО руководителя" [required]="false"
+                    [(ngModel)]="business.businessExtended.director">
+                </input-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <input-field name="addDocs" label="Добавить документы" placeholder="" [required]="false">
+                </input-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <div>
+            <button [disable]="businessForm.invalid" (click)="onSubmit(businessForm)">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!--
+<mat-form-field>
+    <mat-label>Nice!</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+</mat-form-field>
+-->

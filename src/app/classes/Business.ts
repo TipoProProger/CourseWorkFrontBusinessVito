@@ -1,10 +1,16 @@
+import { BusinessExtended } from "./BusinessExtended";
+import { Approvement } from "./Approvement";
+import { Okopf } from "./Okopf";
+import { Okfs } from "./Okfs";
+
 export interface Business {
+    
     id: number;
     
     shortName : string;
     fullName : string;
-    price : number;
-    email : string;
+    cost : number;
+    busEmail : string;
     okopf : string;
     okfs : string;
     ogrn : string;
@@ -13,23 +19,9 @@ export interface Business {
     taxDebt : number;
     courtCases : number;
 
-    telephoneNumber : string;
-    site : string;
-    kpp : string;
-    okpo : string;
-    oktmo : string;
-    regDate : Date;
-    director : string;
-    amountWorkers : number;
-    mainActivity : string;
-    taxAgency : string;
-    founders : string;
-    taxes : number;
-    profit : number;
+    okopfDict : Okopf;
+    okfsDict : Okfs;
 
-    address : string;
-    authorizedCapital : string;
-
-    //scanTaxes
-    //scanCourt
+    approvement : Approvement;
+    businessExtended : BusinessExtended;    
 }

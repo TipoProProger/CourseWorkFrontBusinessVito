@@ -7,16 +7,22 @@ import { FormControlsModule } from './form-controls/form-controls-module/form-co
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BusinessInfoComponent } from './pages/business-info/business-info.component';
+import { BusinessEditComponent } from './pages/business-edit/business-edit.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { BusinessListComponent } from './pages/business-list/business-list.component';
+import { MyBusinessListComponent } from './pages/my-business-list/my-business-list.component';
+import { BusinessReadComponent } from './pages/business-read/business-read.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         TestComponent,
-        BusinessInfoComponent,
+        BusinessEditComponent,
+        BusinessListComponent,
+        MyBusinessListComponent,
+        BusinessReadComponent,
     ],
     imports: [
         BrowserModule,
