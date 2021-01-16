@@ -1,1 +1,54 @@
-<p>business-read works!</p>
+<div *ngIf="business">
+    <p>Краткое название: {{business.shortName}}</p>
+    <p>Полное название: {{business.fullName}}</p>
+    <p>Цена: {{business.cost}}</p>
+    <p>Email предприятия: {{business.busEmail}}</p>
+    <p>ОКОПФ: {{business.okopf}}</p>
+    <p>ОКФС: {{business.okfs}}</p>
+    <p>ОГРН: {{business.ogrn}}</p>
+    <p>ИНН: {{business.inn}}</p>
+    <p>ОКАТО: {{business.okato}}</p>
+    <p>Налог. задолж-ть: {{business.taxDebt}}</p>
+    <p>Судебные дела: {{business.courtCases}}</p>
+
+    <p>Телефон предприятия: {{business.businessExtended.telephone}}</p>
+    <p>Сайт предприятия: {{business.businessExtended.site}}</p>
+    <p>Юридический адрес предприятия: {{business.businessExtended.adress}}</p>
+    <p>Уставной капитал: {{business.businessExtended.authorizedCapital}}</p>
+    <p>КПП: {{business.businessExtended.kpp}}</p>
+    <p>ОКПО: {{business.businessExtended.okpo}}</p>
+    <p>ОКТМО: {{business.businessExtended.oktmo}}</p>
+    <p>Дата регистрации: {{business.businessExtended.regDate}}</p>
+    <p>Руководитеь: {{business.businessExtended.director}}</p>
+    <p>Количество сотрудников: {{business.businessExtended.amountWorkers}}</p>
+    <p>Налоговый орган: {{business.businessExtended.taxAgency}}</p>
+    <p>Учредители: {{business.businessExtended.founders}}</p>
+    <p>Налоги: {{business.businessExtended.taxes}}</p>
+    <p>Прибыль за год: {{business.businessExtended.profit}}</p>
+    <!--
+    scanTaxes : Blob;
+    scanCourt : Blob;
+-->
+
+    <form>
+        <div>
+            <mat-checkbox [(value)]="business.approvement.scanTaxsApr">
+                Подтвердить корректность скана о налоговой задолжности
+            </mat-checkbox>
+        </div>
+        <div>
+            <mat-checkbox [(value)]="business.approvement.scanCourtApr">
+                Подтвердить корректность скана о судебных делах
+            </mat-checkbox>
+        </div>
+
+        <custom-textarea name="info" label="Заключение: " placeholder="Введите заключение" [required]="false"
+            [(ngModel)]="business.approvement.info">
+        </custom-textarea>
+<!--
+        <div>
+            <button [disable]="businessForm.invalid" (click)="onSubmit(businessForm)">Сохранить</button>
+        </div>
+        -->
+    </form>
+</div>

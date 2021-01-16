@@ -13,9 +13,6 @@ import { BusinessService } from "../../services//business.service";
 export class BusinessEditComponent implements OnInit {
 
     //редактировать и создать новое объявления
-    //и для пользователя (текущий вариант)
-    //и для эксперта (добавляются галочки. Остальное только для чтения)
-    //и для модератора (доавляются кнопки. Остальное только для чтения)
     public business: Business;
 
     constructor(private businessService: BusinessService) { }

@@ -5,9 +5,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { DroplistComponent } from '../droplist/droplist.component';
 import { CustomInputFieldComponent } from "../custom-input-field/custom-input-field.component";
+import { CustomTextareaComponent } from "../custom-textarea/custom-textarea.component";
 
 @NgModule({
-  declarations: [DroplistComponent, CustomInputFieldComponent],
+  declarations: [DroplistComponent, CustomInputFieldComponent, CustomTextareaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -15,7 +16,8 @@ import { CustomInputFieldComponent } from "../custom-input-field/custom-input-fi
   ],
   exports: [
       DroplistComponent,
-      CustomInputFieldComponent
+      CustomInputFieldComponent,
+      CustomTextareaComponent,
   ]
 })
 export class FormControlsModule { }

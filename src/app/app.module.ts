@@ -1,28 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormControlsModule } from './form-controls/form-controls-module/form-controls.module';
-import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BusinessEditComponent } from './pages/business-edit/business-edit.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
-import { BusinessListComponent } from './pages/business-list/business-list.component';
-import { MyBusinessListComponent } from './pages/my-business-list/my-business-list.component';
-import { BusinessReadComponent } from './pages/business-read/business-read.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-@NgModule({
+import { AppRoutingModule } from './app-routing.module';
+import { FormControlsModule } from './form-controls/form-controls-module/form-controls.module';
+import { AuthConfigModule } from './config/auth-config/auth-config.module';
+
+import { AppComponent } from './app.component';
+import { TestComponent } from './components/test/test.component';
+import { BusinessEditComponent } from './pages/business-edit/business-edit.component';
+import { AdvertisementListComponent } from './pages/advertisemenet-list/advertisement-list.component';
+import { UserBusinessListComponent } from './pages/user-business-list/user-business-list.component';
+import { BusinessReadComponent } from './pages/business-read/business-read.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AdvertisementPanelComponent } from './components/advertisement-panel/advertisement-panel.component';
+
+@NgModule({    
     declarations: [
         AppComponent,
         TestComponent,
         BusinessEditComponent,
-        BusinessListComponent,
-        MyBusinessListComponent,
+        AdvertisementListComponent,
+        UserBusinessListComponent,
         BusinessReadComponent,
+        HeaderComponent,
+        AdvertisementPanelComponent,
     ],
     imports: [
         BrowserModule,
@@ -30,9 +38,11 @@ import { BusinessReadComponent } from './pages/business-read/business-read.compo
         FormControlsModule,
         MatGridListModule,
         MatFormFieldModule,
+        MatCheckboxModule,
         FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        AuthConfigModule,      
     ],
     providers: [],
     bootstrap: [AppComponent]

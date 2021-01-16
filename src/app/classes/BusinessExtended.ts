@@ -15,7 +15,7 @@ export interface BusinessExtended {
     taxAgency : string;
     founders : string;
     taxes : number;
-    profi : number;
+    profit : number;
     scanTaxes : Blob;
     scanCourt : Blob;
 }
