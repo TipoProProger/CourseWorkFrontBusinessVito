@@ -66,4 +66,8 @@ export class AdvertisementService {
     rejectAdvertisement(businessId : number) : Observable<Advertisement> {
         return this.http.get<Advertisement>(this.businessAPI_URL + "/admin/advertisement/reject/" + String(businessId));        
     }
+
+    finishAdvertisement(businessId : number) {
+        return this.http.post(this.businessAPI_URL + "/user/finish/advertisement/" + String(businessId), null).subscribe();
+    }
 }

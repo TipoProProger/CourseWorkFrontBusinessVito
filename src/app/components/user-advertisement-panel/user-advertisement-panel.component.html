@@ -14,7 +14,7 @@
         <p>ИНН: {{inn}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
-        <button routerLink="/user/edit/business/{{id}}">Изменить объявление</button>
+        <button [disabled]="disabledState" routerLink="/user/edit/business/{{id}}">Изменить объявление</button>
     </mat-grid-tile>
 
     <mat-grid-tile></mat-grid-tile>

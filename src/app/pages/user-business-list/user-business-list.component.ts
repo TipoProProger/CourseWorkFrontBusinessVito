@@ -12,12 +12,12 @@ import { AdvertisementService } from "../../services/advertisement.service";
 export class UserBusinessListComponent implements OnInit {
 
     //мои объявления
-    public advertisements : Advertisement[];
+    public advertisements : Advertisement[];    
 
     constructor(private advertisementService : AdvertisementService) { }
 
     ngOnInit(): void {
-        this.getAdvertisementList();
+        this.getAdvertisementList();        
     }
 
     getAdvertisementList(): void {        
@@ -26,11 +26,6 @@ export class UserBusinessListComponent implements OnInit {
 
     //delete advertisement
     onDelete() {
-
-    }
-
-    //add new advertisement
-    onAdd() {
 
     }
 }

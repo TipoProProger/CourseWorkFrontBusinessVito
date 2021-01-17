@@ -27,6 +27,9 @@
         {{okopfName}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
-        <p>Like: {{likes}} Dislike: {{dislikes}}</p>
+        <div>
+            <button (click)=addLikes()>Like: {{likes}}</button>
+            <button (click)=addDislikes()>Dislikes: {{dislikes}}</button>
+        </div>
     </mat-grid-tile>
 </mat-grid-list>
