@@ -2,7 +2,25 @@
     <div>
         <div>
             <h1 style="text-align: left;">Бизнес-Вита</h1>
-            <h4 style="text-align: right;"><a href="#" (click)="logout()">Logout</a></h4>
-        </div>                    
+
+            <h4 style="text-align: midle;">
+                <div *ngIf="userRole">
+                    <div *ngIf="userRole.includes('Пользователь'); else other_if">
+                        <a routerLink="/user/advertisements">Мои объявления</a>
+                    </div>
+                    <ng-template #other_if>
+                        <div *ngIf="userRole.includes('Эксперт'); else other_other_if">
+                            <a routerLink="/expert/advertisements">Ожидают проверки</a>
+                        </div>
+                        <ng-template #other_other_if>
+                            <div *ngIf="userRole.includes('Модератор')">
+                                <a routerLink="/admin/advertisements">Ожидают публикации</a>
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                </div>
+            </h4>
+            <h4 style="text-align: right;"><a href="/" (click)="logout()">Logout</a></h4>
+        </div>
     </div>
 </div>

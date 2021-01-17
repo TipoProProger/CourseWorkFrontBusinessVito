@@ -1,1 +1,9 @@
-<p>my-business-list works!</p>
+<div *ngIf="advertisements">
+    <div *ngFor="let advertisement of advertisements">
+        <user-advertisement-panel [id]="advertisement.id" [shortName]="advertisement.business.shortName"
+            [userName]="advertisement.user.FIO" [price]="advertisement.business.cost" [inn]="advertisement.business.inn"
+            [okopfName]="advertisement.business.okopfDict.name" [date]="advertisement.placeDate"
+            [likes]="advertisement.likes" [dislikes]="advertisement.dislikes">
+        </user-advertisement-panel>>
+    </div>
+</div>

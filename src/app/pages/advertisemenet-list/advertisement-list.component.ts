@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Advertisement } from "../../classes/Advertisement";
 import { AdvertisementService } from "../../services/advertisement.service";
 
+import { AuthConfigService } from "../../services/auth-config.service";
+
 @Component({
     selector: 'app-advertisement-list',
     templateUrl: './advertisement-list.component.html',
@@ -17,7 +19,6 @@ export class AdvertisementListComponent implements OnInit {
     //fuck it till the end
     
     public advertisements : Advertisement[];
-    public buf : Advertisement;
 
     constructor(private advertisementService : AdvertisementService) { }
 
@@ -26,7 +27,7 @@ export class AdvertisementListComponent implements OnInit {
     }
 
     getAdvertisementList(): void {
-        this.advertisementService.getAdvertisements().subscribe(advertisements => {this.advertisements = advertisements; this.buf = this.advertisements[0]});        
+        this.advertisementService.getAdvertisements().subscribe(advertisements => this.advertisements = advertisements);        
     }
 
 }

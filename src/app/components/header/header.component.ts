@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private readonly oauthService: OAuthService) { }
+    public userRole : string;
 
-  ngOnInit(): void {
-  }
+    constructor(private readonly oauthService: OAuthService,
+        private userService: UserService) { }    
 
-  logout() {
-    this.oauthService.logOut();
-  }
+    ngOnInit(): void {
+        this.userService.getSelf().subscribe(user => this.userRole = user.role.name);        
+    }
+
+    logout() {
+        this.oauthService.logOut();
+    }
 }

@@ -10,17 +10,17 @@ export function init_app(authConfigService: AuthConfigService) {
 }
 
 @NgModule({
-  imports: [ HttpClientModule, OAuthModule.forRoot() ],
-  providers: [
-    AuthConfigService,
-    { provide: AuthConfig, useValue: authConfig },
-    OAuthModuleConfig,
-    { 
-      provide: APP_INITIALIZER, 
-      useFactory: init_app, 
-      deps: [ AuthConfigService ], 
-      multi: true
-    }
-  ]
+    imports: [HttpClientModule, OAuthModule.forRoot()],
+    providers: [
+        AuthConfigService,
+        { provide: AuthConfig, useValue: authConfig },
+        OAuthModuleConfig,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: init_app,
+            deps: [AuthConfigService],
+            multi: true
+        }
+    ]
 })
 export class AuthConfigModule { }

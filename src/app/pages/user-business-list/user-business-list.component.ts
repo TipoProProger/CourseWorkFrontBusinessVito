@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/classes/User';
+
+import { Advertisement } from "../../classes/Advertisement";
+import { AdvertisementService } from "../../services/advertisement.service";
 
 @Component({
     selector: 'app-my-business-list',
@@ -8,10 +12,16 @@ import { Component, OnInit } from '@angular/core';
 export class UserBusinessListComponent implements OnInit {
 
     //мои объявления
+    public advertisements : Advertisement[];
 
-    constructor() { }
+    constructor(private advertisementService : AdvertisementService) { }
 
     ngOnInit(): void {
+        this.getAdvertisementList();
+    }
+
+    getAdvertisementList(): void {        
+        this.advertisementService.getUserAdvertisements().subscribe(advertisements => this.advertisements = advertisements);        
     }
 
     //delete advertisement
@@ -21,7 +31,7 @@ export class UserBusinessListComponent implements OnInit {
 
     //edit existing advertisement
     onEdit() {
-
+        
     }
 
     //add new advertisement

@@ -29,26 +29,72 @@
     scanTaxes : Blob;
     scanCourt : Blob;
 -->
+    <div *ngIf="simpleUser == true">
+        <p *ngIf="business.approvement.scanTaxsApr == 1; else other_content_taxes">Скан документа о налоговой
+            задолжности
+            подтвержден</p>
+        <ng-template #other_content_taxes>
+            <p> Скан документа о налоговой задолжности не подтвержден</p>
+        </ng-template>
 
-    <form>
-        <div>
-            <mat-checkbox [(value)]="business.approvement.scanTaxsApr">
-                Подтвердить корректность скана о налоговой задолжности
-            </mat-checkbox>
-        </div>
-        <div>
-            <mat-checkbox [(value)]="business.approvement.scanCourtApr">
-                Подтвердить корректность скана о судебных делах
-            </mat-checkbox>
-        </div>
+        <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о количестве
+            судебных дел
+            подтвержден</p>
+        <ng-template #other_content_courts>
+            <p>Скан документа о количестве судебных дел не подтвержден</p>
+        </ng-template>
 
-        <custom-textarea name="info" label="Заключение: " placeholder="Введите заключение" [required]="false"
-            [(ngModel)]="business.approvement.info">
-        </custom-textarea>
-<!--
         <div>
-            <button [disable]="businessForm.invalid" (click)="onSubmit(businessForm)">Сохранить</button>
+            <p>Заключение:</p>
+            <p>{{business.approvement.info}}</p>
         </div>
-        -->
-    </form>
+    </div>
+
+    <div *ngIf="expertUser == true">
+        <form>
+            <div>
+                <mat-checkbox [(value)]="business.approvement.scanTaxsApr">
+                    Подтвердить корректность скана о налоговой задолжности
+                </mat-checkbox>
+            </div>
+            <div>
+                <mat-checkbox [(value)]="business.approvement.scanCourtApr">
+                    Подтвердить корректность скана о судебных делах
+                </mat-checkbox>
+            </div>
+
+            <custom-textarea name="info" label="Заключение: " placeholder="Введите заключение" [required]="false"
+                [(ngModel)]="business.approvement.info">
+            </custom-textarea>
+            
+            <div>
+                <button (click)="onExpertSubmit()">Сохранить</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="adminUser == true">
+        <p *ngIf="business.approvement.scanTaxsApr == 1; else other_content_taxes">Скан документа о налоговой
+            задолжности
+            подтвержден</p>
+        <ng-template #other_content_taxes>
+            <p> Скан документа о налоговой задолжности не подтвержден</p>
+        </ng-template>
+
+        <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о количестве
+            судебных дел
+            подтвержден</p>
+        <ng-template #other_content_courts>
+            <p>Скан документа о количестве судебных дел не подтвержден</p>
+        </ng-template>
+
+        <div>
+            <p>Заключение:</p>
+            <p>{{business.approvement.info}}></p>                    
+        </div>
+            
+        <button (click)="onSubmitPlace()">Подтвердить размещение</button>
+        <button (click)="onSubmitReject()">Отклонить размещение</button>        
+    </div>
+
 </div>

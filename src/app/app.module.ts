@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -20,6 +20,10 @@ import { UserBusinessListComponent } from './pages/user-business-list/user-busin
 import { BusinessReadComponent } from './pages/business-read/business-read.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AdvertisementPanelComponent } from './components/advertisement-panel/advertisement-panel.component';
+import { UserAdvertisementPanelComponent } from './components/user-advertisement-panel/user-advertisement-panel.component';
+import { ExpertListComponent } from './pages/expert-list/expert-list.component';
+
+import { AuthInterceptor } from "./services/auth-interceptor.service";
 
 @NgModule({    
     declarations: [
@@ -31,6 +35,8 @@ import { AdvertisementPanelComponent } from './components/advertisement-panel/ad
         BusinessReadComponent,
         HeaderComponent,
         AdvertisementPanelComponent,
+        UserAdvertisementPanelComponent,
+        ExpertListComponent,
     ],
     imports: [
         BrowserModule,
@@ -44,7 +50,11 @@ import { AdvertisementPanelComponent } from './components/advertisement-panel/ad
         HttpClientModule,
         AuthConfigModule,      
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+      }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,18 +6,22 @@
     <mat-grid-tile>
         Дата размещения: {{date | date:'dd.MM.y'}}
     </mat-grid-tile>
-
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-
+    
     <mat-grid-tile>
         <p>Продавец: {{userName}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
         <p>ИНН: {{inn}}</p>
     </mat-grid-tile>
+    <mat-grid-tile>
+        <button routerLink="/user/edit/business/{{id}}">Изменить объявление</button>
+    </mat-grid-tile>
+
     <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <button (click)="onKill()">Закрыть объявление</button>
+    </mat-grid-tile>
 
     <mat-grid-tile>
         <p>Цена: {{price}}</p>
@@ -27,6 +31,6 @@
         {{okopfName}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
-        Like: {{likes}} Dislike: {{dislikes}}
+        Рейтинг объявления: {{score}}
     </mat-grid-tile>
 </mat-grid-list>

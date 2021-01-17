@@ -9,33 +9,33 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { buffer, catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BusinessService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+    httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
 
-  private businessAPI_URL = 'http://localhost:8080/test_business_info/';  // URL to web api
+    private businessAPI_URL = 'http://localhost:8080/user/business/';  // URL to web api
 
-  getBusiness(id : number) : Observable<Business> {
-      //return of(MOCK_DATA_BUSINESS);///FIXME
-      return this.http.get<Business>(this.businessAPI_URL + String(id));
-  }
+    getBusiness(id: number): Observable<Business> {
+        console.log(this.businessAPI_URL + String(id));
+        return this.http.get<Business>(this.businessAPI_URL + String(id));
+    }
 
-  sendBusiness(business : Business) : Observable<Business> {
-    console.log("try to send");
-    let url : string = this.businessAPI_URL + "add";
-    console.log(url);
-    
-    return this.http.post<Business>(url, business, this.httpOptions);
-    /*.pipe(map((response: Business) => {
-        console.log(response);
-    }));*/ 
-  }
+    sendBusiness(business: Business): Observable<Business> {
+        console.log("try to send");
+        let url: string = this.businessAPI_URL + "add";
+        console.log(url);
 
-  
+        return this.http.post<Business>(url, business, this.httpOptions);
+        /*.pipe(map((response: Business) => {
+            console.log(response);
+        }));*/
+    }
+
+
 }

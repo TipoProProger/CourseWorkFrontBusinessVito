@@ -8,7 +8,7 @@ export const environment = {
     envName: 'local',
     keycloak: {
       // Url of the Identity Provider
-      issuer: 'http://localhost:8180/auth/realms/quarkus-front',
+      issuer: 'http://localhost:8180/auth/realms/businessVito',
   
       // URL of the SPA to redirect the user to after login
       redirectUri: 'http://localhost:4200/advertisements',
