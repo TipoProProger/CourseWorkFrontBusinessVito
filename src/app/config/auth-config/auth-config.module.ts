@@ -5,7 +5,7 @@ import { OAuthModule, AuthConfig } from 'angular-oauth2-oidc';
 import { AuthConfigService } from '../../services/auth-config.service';
 import { authConfig, OAuthModuleConfig } from '../auth-config';
 
-export function init_app(authConfigService: AuthConfigService) {
+export function init_app(authConfigService: AuthConfigService) {    
     return () => authConfigService.initAuth();
 }
 

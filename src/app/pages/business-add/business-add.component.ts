@@ -6,21 +6,20 @@ import { Location } from '@angular/common';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { BusinessService } from "../../services//business.service";
 
-import { Business } from "../../classes/Business";
+import { Business, createEmptyBusiness } from "../../classes/Business";
 
 @Component({
-    selector: 'app-business-edit',
-    templateUrl: './business-edit.component.html',
-    styleUrls: ['./business-edit.component.css']
+  selector: 'app-business-add',
+  templateUrl: './business-add.component.html',
+  styleUrls: ['./business-add.component.css']
 })
-export class BusinessEditComponent implements OnInit {
+export class BusinessAddComponent implements OnInit {
 
-    //редактировать и создать новое объявления
+    //создать новое объявления
     public business: Business;
 
     constructor(private businessService: BusinessService,
         private advertisementService: AdvertisementService,
-        private route: ActivatedRoute,
         private location: Location) { }
 
     onSubmit(businessForm: NgForm) {
@@ -29,14 +28,11 @@ export class BusinessEditComponent implements OnInit {
             this.advertisementService.placeUserAdvertisement(this.business).subscribe();
         }
     }
-
+    
     ngOnInit(): void {
-        const id = + this.route.snapshot.paramMap.get('id');
-        this.getBusiness(id);
-    }
-
-    getBusiness(id: number): void {
-        this.businessService.getBusiness(id).subscribe(business => this.business = business);
+        this.business = createEmptyBusiness();
+        
+        console.log(this.business);
     }
 
     goBack(): void {

@@ -1,10 +1,10 @@
 <mat-grid-list cols=3 rowHeight="70px" >
     <mat-grid-tile>
-        <a routerLink="/user/read/business/{{id}}">{{shortName}}</a>
+        <a class="name" routerLink="/user/read/business/{{id}}">{{shortName}}</a>
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
-        Дата размещения: {{date | date:'dd.MM.y'}}
+        <p>Дата размещения: {{date | date:'dd.MM.y'}}</p>
     </mat-grid-tile>
 
     <mat-grid-tile></mat-grid-tile>
@@ -27,6 +27,6 @@
         {{okopfName}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
-        Like: {{likes}} Dislike: {{dislikes}}
+        <p>Like: {{likes}} Dislike: {{dislikes}}</p>
     </mat-grid-tile>
 </mat-grid-list>

@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Advertisement } from "../../classes/Advertisement";
 import { AdvertisementService } from "../../services/advertisement.service";
 
-import { AuthConfigService } from "../../services/auth-config.service";
-
 @Component({
     selector: 'app-advertisement-list',
     templateUrl: './advertisement-list.component.html',
@@ -27,6 +25,7 @@ export class AdvertisementListComponent implements OnInit {
     }
 
     getAdvertisementList(): void {
+        console.log("all resolved advertisements");
         this.advertisementService.getAdvertisements().subscribe(advertisements => this.advertisements = advertisements);        
     }
 

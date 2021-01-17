@@ -22,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AdvertisementPanelComponent } from './components/advertisement-panel/advertisement-panel.component';
 import { UserAdvertisementPanelComponent } from './components/user-advertisement-panel/user-advertisement-panel.component';
 import { ExpertListComponent } from './pages/expert-list/expert-list.component';
+import { BusinessAddComponent } from './pages/business-add/business-add.component';
 
 import { AuthInterceptor } from "./services/auth-interceptor.service";
 
@@ -37,6 +38,7 @@ import { AuthInterceptor } from "./services/auth-interceptor.service";
         AdvertisementPanelComponent,
         UserAdvertisementPanelComponent,
         ExpertListComponent,
+        BusinessAddComponent,
     ],
     imports: [
         BrowserModule,

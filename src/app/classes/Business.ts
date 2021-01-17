@@ -1,7 +1,7 @@
-import { BusinessExtended } from "./BusinessExtended";
-import { Approvement } from "./Approvement";
-import { Okopf } from "./Okopf";
-import { Okfs } from "./Okfs";
+import { BusinessExtended, createEmptyBusinessExtended } from "./BusinessExtended";
+import { Approvement, createEmptyApprovement } from "./Approvement";
+import { Okopf, createEmptyOkopf } from "./Okopf";
+import { Okfs, createEmptyOkfs } from "./Okfs";
 
 export interface Business {
     
@@ -24,4 +24,28 @@ export interface Business {
 
     approvement : Approvement;
     businessExtended : BusinessExtended;    
+}
+
+export function createEmptyBusiness() : Business {
+    return {   
+        id: null,
+
+        shortName: null,
+        fullName: null,
+        cost: null,
+        busEmail: null,
+        okopf: null,
+        okfs: null,
+        ogrn: null,
+        inn: null,
+        okato: null,
+        taxDebt: null,
+        courtCases: null,
+
+        okopfDict: createEmptyOkopf(),
+        okfsDict : createEmptyOkfs(),
+
+        approvement : createEmptyApprovement(),
+        businessExtended : createEmptyBusinessExtended()
+    }
 }

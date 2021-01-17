@@ -6,6 +6,7 @@ import { AdvertisementListComponent } from './pages/advertisemenet-list/advertis
 import { BusinessEditComponent } from "./pages/business-edit/business-edit.component";
 import { BusinessReadComponent } from './pages/business-read/business-read.component';
 import { ExpertListComponent } from './pages/expert-list/expert-list.component';
+import { BusinessAddComponent } from './pages/business-add/business-add.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/advertisements', pathMatch: 'full' },    
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'expert/advertisements', component: ExpertListComponent},
     { path: 'admin/advertisements', component: ExpertListComponent},
     { path: 'user/edit/business/:id', component: BusinessEditComponent },
+    { path: 'user/add/business', component: BusinessAddComponent },
     { path: 'user/read/business/:id', component: BusinessReadComponent },    
 ];
 

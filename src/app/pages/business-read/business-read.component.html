@@ -11,90 +11,99 @@
     <p>Налог. задолж-ть: {{business.taxDebt}}</p>
     <p>Судебные дела: {{business.courtCases}}</p>
 
-    <p>Телефон предприятия: {{business.businessExtended.telephone}}</p>
-    <p>Сайт предприятия: {{business.businessExtended.site}}</p>
-    <p>Юридический адрес предприятия: {{business.businessExtended.adress}}</p>
-    <p>Уставной капитал: {{business.businessExtended.authorizedCapital}}</p>
-    <p>КПП: {{business.businessExtended.kpp}}</p>
-    <p>ОКПО: {{business.businessExtended.okpo}}</p>
-    <p>ОКТМО: {{business.businessExtended.oktmo}}</p>
-    <p>Дата регистрации: {{business.businessExtended.regDate}}</p>
-    <p>Руководитеь: {{business.businessExtended.director}}</p>
-    <p>Количество сотрудников: {{business.businessExtended.amountWorkers}}</p>
-    <p>Налоговый орган: {{business.businessExtended.taxAgency}}</p>
-    <p>Учредители: {{business.businessExtended.founders}}</p>
-    <p>Налоги: {{business.businessExtended.taxes}}</p>
-    <p>Прибыль за год: {{business.businessExtended.profit}}</p>
+    <p *ngIf="business.businessExtended.telephone">Телефон предприятия: {{business.businessExtended.telephone}}</p>
+    <p *ngIf="business.businessExtended.site">Сайт предприятия: {{business.businessExtended.site}}</p>
+    <p *ngIf="business.businessExtended.adress">Юридический адрес предприятия: {{business.businessExtended.adress}}</p>
+    <p *ngIf="business.businessExtended.authorizedCapital">Уставной капитал: {{business.businessExtended.authorizedCapital}}</p>
+    <p *ngIf="business.businessExtended.kpp">КПП: {{business.businessExtended.kpp}}</p>
+    <p *ngIf="business.businessExtended.okpo">ОКПО: {{business.businessExtended.okpo}}</p>
+    <p *ngIf="business.businessExtended.oktmo">ОКТМО: {{business.businessExtended.oktmo}}</p>
+    <p *ngIf="business.businessExtended.regDate">Дата регистрации: {{business.businessExtended.regDate}}</p>
+    <p *ngIf="business.businessExtended.director">Руководитеь: {{business.businessExtended.director}}</p>
+    <p *ngIf="business.businessExtended.amountWorkers">Количество сотрудников: {{business.businessExtended.amountWorkers}}</p>
+    <p *ngIf="business.businessExtended.taxAgency">Налоговый орган: {{business.businessExtended.taxAgency}}</p>
+    <p *ngIf="business.businessExtended.founders">Учредители: {{business.businessExtended.founders}}</p>
+    <p *ngIf="business.businessExtended.taxes">Налоги: {{business.businessExtended.taxes}}</p>
+    <p *ngIf="business.businessExtended.profit">Прибыль за год: {{business.businessExtended.profit}}</p>
     <!--
     scanTaxes : Blob;
     scanCourt : Blob;
 -->
-    <div *ngIf="simpleUser == true">
-        <p *ngIf="business.approvement.scanTaxsApr == 1; else other_content_taxes">Скан документа о налоговой
-            задолжности
-            подтвержден</p>
-        <ng-template #other_content_taxes>
-            <p> Скан документа о налоговой задолжности не подтвержден</p>
-        </ng-template>
+    <div *ngIf="userRole">
+        <div *ngIf="userRole.includes('Пользователь'); then simple_user else other_if"></div>
+        <div #other_if *ngIf="userRole.includes('Эксперт'); then expert_user else other_other_if"></div>
+        <div #other_other_if *ngIf="userRole.includes('Модератор'); then moderator_user"></div>
 
-        <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о количестве
-            судебных дел
-            подтвержден</p>
-        <ng-template #other_content_courts>
-            <p>Скан документа о количестве судебных дел не подтвержден</p>
-        </ng-template>
+        <ng-template #simple_user>
+            <p *ngIf="business.approvement.scanTaxsApr == 1; else other_content_taxes">Скан документа о налоговой
+                задолжности
+                подтвержден</p>
+            <ng-template #other_content_taxes>
+                <p> Скан документа о налоговой задолжности не подтвержден</p>
+            </ng-template>
 
-        <div>
-            <p>Заключение:</p>
-            <p>{{business.approvement.info}}</p>
-        </div>
-    </div>
+            <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о количестве
+                судебных дел
+                подтвержден</p>
+            <ng-template #other_content_courts>
+                <p>Скан документа о количестве судебных дел не подтвержден</p>
+            </ng-template>
 
-    <div *ngIf="expertUser == true">
-        <form>
             <div>
-                <mat-checkbox [(value)]="business.approvement.scanTaxsApr">
-                    Подтвердить корректность скана о налоговой задолжности
-                </mat-checkbox>
+                <p>Заключение:</p>
+                <p>{{business.approvement.info}}</p>
             </div>
-            <div>
-                <mat-checkbox [(value)]="business.approvement.scanCourtApr">
-                    Подтвердить корректность скана о судебных делах
-                </mat-checkbox>
-            </div>
-
-            <custom-textarea name="info" label="Заключение: " placeholder="Введите заключение" [required]="false"
-                [(ngModel)]="business.approvement.info">
-            </custom-textarea>
-            
-            <div>
-                <button (click)="onExpertSubmit()">Сохранить</button>
-            </div>
-        </form>
-    </div>
-
-    <div *ngIf="adminUser == true">
-        <p *ngIf="business.approvement.scanTaxsApr == 1; else other_content_taxes">Скан документа о налоговой
-            задолжности
-            подтвержден</p>
-        <ng-template #other_content_taxes>
-            <p> Скан документа о налоговой задолжности не подтвержден</p>
         </ng-template>
 
-        <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о количестве
-            судебных дел
-            подтвержден</p>
-        <ng-template #other_content_courts>
-            <p>Скан документа о количестве судебных дел не подтвержден</p>
+        <ng-template #expert_user>
+            <form>
+                <div>
+                    <mat-checkbox name="taxesScan" [(ngModel)]="taxesScan">
+                        Подтвердить корректность скана о налоговой задолжности
+                    </mat-checkbox>
+                </div>
+                <div>
+                    <mat-checkbox name="courtsScan" [(ngModel)]="courtsScan">
+                        Подтвердить корректность скана о судебных делах
+                    </mat-checkbox>
+                </div>
+
+                <custom-textarea name="info" label="Заключение: " placeholder="Введите заключение" [required]="false"
+                    [(ngModel)]="business.approvement.info">
+                </custom-textarea>
+
+                <div>
+                    <button (click)="onExpertSubmit()">Сохранить</button>
+                </div>
+            </form>
         </ng-template>
 
-        <div>
-            <p>Заключение:</p>
-            <p>{{business.approvement.info}}></p>                    
-        </div>
-            
-        <button (click)="onSubmitPlace()">Подтвердить размещение</button>
-        <button (click)="onSubmitReject()">Отклонить размещение</button>        
-    </div>
+        <ng-template #moderator_user>
+            <div>
+                <p *ngIf=" business.approvement.scanTaxsApr==1; else other_content_taxes">Скан документа о налоговой
+                    задолжности
+                    подтвержден</p>
+                <ng-template #other_content_taxes>
+                    <p> Скан документа о налоговой задолжности не подтвержден</p>
+                </ng-template>
 
+                <p *ngIf="business.approvement.scanCourtApr == 1; else other_content_courts">Скан документа о
+                    количестве
+                    судебных дел
+                    подтвержден</p>
+                <ng-template #other_content_courts>
+                    <p>Скан документа о количестве судебных дел не подтвержден</p>
+                </ng-template>
+
+                <div>
+                    <p>Заключение:</p>
+                    <p>{{business.approvement.info}}></p>
+                </div>
+
+                <button (click)="onSubmitPlace()">Подтвердить размещение</button>
+                <button (click)="onSubmitReject()">Отклонить размещение</button>
+            </div>
+        </ng-template>
+
+    </div>
 </div>

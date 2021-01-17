@@ -1,4 +1,4 @@
-import { User } from "./User"
+import { User, createEmptyUser } from "./User"
 
 export interface Approvement {
     id : number;
@@ -9,4 +9,17 @@ export interface Approvement {
     scanTaxsApr : number;
     scanCourtApr : number;
     user : User;
+}
+
+export function createEmptyApprovement() : Approvement {
+    return {
+        id : null,
+
+        number :null,
+        date : null,
+        info : null,
+        scanTaxsApr : null,
+        scanCourtApr : null,
+        user : createEmptyUser()
+    }
 }

@@ -6,7 +6,7 @@ import { Business } from "../../classes/Business";
 
 import { BusinessService } from "../../services/business.service";
 import { AdvertisementService } from "../../services/advertisement.service";
-import { AuthConfigService } from "../../services/auth-config.service";
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-business-read',
@@ -16,13 +16,13 @@ import { AuthConfigService } from "../../services/auth-config.service";
 export class BusinessReadComponent implements OnInit {
 
     public business: Business;
-    public simpleUser = false;
-    public expertUser = false;
-    public adminUser = false;
+    public userRole: string;
+    public taxesScan: boolean;
+    public courtsScan: boolean;
 
     constructor(private businessService: BusinessService,
-        private advertisementService : AdvertisementService,
-        private readonly auth: AuthConfigService,        
+        private advertisementService: AdvertisementService,
+        private userService: UserService,
         private route: ActivatedRoute,
         private location: Location) { }
 
@@ -31,15 +31,20 @@ export class BusinessReadComponent implements OnInit {
     //и для модератора (доавляются кнопки. Остальное только для чтения)
 
     ngOnInit(): void {
+        this.userService.getSelf().subscribe(user => {
+            this.userRole = user.role.name;
+            console.log(this.userRole);
+        });
         this.getBusiness();
-        this.simpleUser = this.auth.decodedTokenInfo['user-role-name'].includes('simple-user');     
-        this.expertUser = this.auth.decodedTokenInfo['user-role-name'].includes('expert-user');
-        this.adminUser = this.auth.decodedTokenInfo['user-role-name'].includes('admin-user');
     }
 
     getBusiness(): void {
         const id = + this.route.snapshot.paramMap.get('id');
-        this.businessService.getBusiness(id).subscribe(business => this.business = business);
+        this.businessService.getBusiness(id).subscribe(business => {
+            this.business = business;
+            this.taxesScan = this.business.approvement.scanTaxsApr != 0;
+            this.courtsScan = this.business.approvement.scanCourtApr != 0;
+        });
     }
 
     goBack(): void {
@@ -47,15 +52,17 @@ export class BusinessReadComponent implements OnInit {
     }
 
     onExpertSubmit() {
-        this.advertisementService.placeExpertAdvertisement(this.business);
+        this.business.approvement.scanTaxsApr = (this.taxesScan ? 1 : 0);
+        this.business.approvement.scanCourtApr = (this.courtsScan ? 1 : 0);
+        this.advertisementService.placeExpertAdvertisement(this.business).subscribe();
     }
 
     onSubmitPlace() {
-        this.advertisementService.acceptAdvertisement(this.business.id);
+        this.advertisementService.acceptAdvertisement(this.business.id).subscribe();
     }
 
     onSubmitReject() {
-        this.advertisementService.rejectAdvertisement(this.business.id);
+        this.advertisementService.rejectAdvertisement(this.business.id).subscribe();
     }
 
 }

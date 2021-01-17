@@ -29,11 +29,6 @@ export class UserBusinessListComponent implements OnInit {
 
     }
 
-    //edit existing advertisement
-    onEdit() {
-        
-    }
-
     //add new advertisement
     onAdd() {
 

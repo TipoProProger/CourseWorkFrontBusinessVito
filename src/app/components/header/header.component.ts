@@ -15,11 +15,15 @@ export class HeaderComponent implements OnInit {
     constructor(private readonly oauthService: OAuthService,
         private userService: UserService) { }    
 
-    ngOnInit(): void {
-        this.userService.getSelf().subscribe(user => this.userRole = user.role.name);        
+    ngOnInit(): void {        
+        this.userService.getSelf().subscribe(user => {
+            this.userRole = user.role.name;            
+        });        
     }
 
     logout() {
+        sessionStorage.clear();
+        localStorage.clear();
         this.oauthService.logOut();
     }
 }

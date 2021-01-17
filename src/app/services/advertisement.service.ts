@@ -32,28 +32,24 @@ export class AdvertisementService {
     }
 
     placeUserAdvertisement(business : Business) : Observable<Advertisement>{
-        let adv : Advertisement;
-        adv.business = business;
-        this.userService.getSelf().subscribe(user => adv.user = user);
-        
-        return this.http.post<Advertisement>(this.businessAPI_URL + "user/advertisement/add", adv, this.httpOptions);
+        console.log(business.id);
+
+        return this.http.post<Advertisement>(this.businessAPI_URL + "/user/advertisement/place", business, this.httpOptions);
     }
 
     placeExpertAdvertisement(business : Business) : Observable<Advertisement> {
-        return this.http.post<Advertisement>(this.businessAPI_URL + "expert/advertisement/add", business, this.httpOptions);
-    }
+        console.log("try to send");
+        return this.http.post<Advertisement>(this.businessAPI_URL + "/expert/advertisement/place", business, this.httpOptions);
+    }    
 
     getUserAdvertisements() : Observable<Advertisement[]> {
-        //let _user = {} as User;
-        //this.userService.getSelf().subscribe(user => {_user = user});
-        
         return this.http.post<Advertisement[]>(this.businessAPI_URL + "/user/advertisements", null, this.httpOptions);
     }
 
     getAdminAdvertisements() : Observable<Advertisement[]> {
         //let _user = {} as User;;
         //this.userService.getSelf().subscribe(user => {_user = user});
-        
+        console.log("send");
         return this.http.get<Advertisement[]>(this.businessAPI_URL + "/admin/advertisements");
     }
 

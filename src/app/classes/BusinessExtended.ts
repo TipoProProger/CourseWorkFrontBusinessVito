@@ -19,3 +19,27 @@ export interface BusinessExtended {
     scanTaxes : Blob;
     scanCourt : Blob;
 }
+
+export function createEmptyBusinessExtended() :BusinessExtended {
+    return {
+        id : null,
+
+        telephone : null,
+        site : null,
+        adress : null,
+        authorizedCapital :null,
+        kpp : null,
+        okpo : null,
+        oktmo : null,
+        regDate : null,
+        director : null,
+        amountWorkers : null,
+        mainActivity : null,
+        taxAgency : null,
+        founders : null,
+        taxes : null,
+        profit : null,
+        scanTaxes : null,
+        scanCourt : null
+    }
+}

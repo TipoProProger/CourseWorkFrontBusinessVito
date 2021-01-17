@@ -23,33 +23,20 @@ export class UserService {
     getSelf(): Observable<User> {
         console.log("try to get self");
 
-        if (sessionStorage.getItem("user") == null) {
-            console.log("in if");
-            this.checkUser(this.auth.decodedTokenInfo.email).subscribe(user => {
-                sessionStorage.setItem("user", JSON.stringify(user));
-            });
-            return of(JSON.parse(sessionStorage.getItem("user")));
-        } else {
-            console.log(sessionStorage.getItem("user"));
-            console.log("after if");
+        if (sessionStorage.getItem("user") != null) {
             return of(JSON.parse(sessionStorage.getItem("user")));
         }
+        
+        let user = {} as User;
+        user.email = this.auth.decodedTokenInfo.email;
+
+        console.log(user.email);
+
+        return this.http.post<User>(this.businessAPI_URL + this.userPart, user, this.httpOptions);
     }
 
     getUser(id: number): Observable<User> {
         return this.http.get<User>(this.businessAPI_URL + this.userPart + String(id));
     }
-
-    checkUser(email: string): Observable<User> {
-        ///TODO
-        //сначала нужно заполнить информацию о пользователе
-        //потом отправить
-        //или сделать отправку запроса на keycloak сервер со стороны своего сервера
-        //он в этот момент произведет синхронизацию
-        let user = {} as User;
-        user.email = email;
-
-        console.log(email);
-        return this.http.post<User>(this.businessAPI_URL + this.userPart, user, this.httpOptions);
-    }
+    
 }
