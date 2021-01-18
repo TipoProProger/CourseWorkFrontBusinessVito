@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -54,15 +54,21 @@ export class BusinessReadComponent implements OnInit {
     onExpertSubmit() {
         this.business.approvement.scanTaxsApr = (this.taxesScan ? 1 : 0);
         this.business.approvement.scanCourtApr = (this.courtsScan ? 1 : 0);
-        this.advertisementService.placeExpertAdvertisement(this.business).subscribe();
+        this.advertisementService.placeExpertAdvertisement(this.business).subscribe(() => {
+            this.location.back();   
+        });
     }
 
     onSubmitPlace() {
-        this.advertisementService.acceptAdvertisement(this.business.id).subscribe();
+        this.advertisementService.acceptAdvertisement(this.business.id).subscribe(() => {
+            this.location.back();
+        });
     }
 
     onSubmitReject() {
-        this.advertisementService.rejectAdvertisement(this.business.id).subscribe();
+        this.advertisementService.rejectAdvertisement(this.business.id).subscribe(() => {
+            this.location.back();
+        });
     }
 
 }

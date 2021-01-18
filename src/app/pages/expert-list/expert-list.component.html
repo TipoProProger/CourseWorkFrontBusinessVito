@@ -1,4 +1,7 @@
 <div *ngIf="advertisements">
+    <div *ngIf="advertisements.length == 0">
+        <p>Всё проверено</p>
+    </div>
     <div *ngFor="let advertisement of advertisements">
         <a routerLink = "/user/read/business/{{advertisement.business.id}}">{{advertisement.business.shortName}}</a>            
     </div>

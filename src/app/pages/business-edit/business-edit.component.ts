@@ -20,13 +20,15 @@ export class BusinessEditComponent implements OnInit {
 
     constructor(private businessService: BusinessService,
         private advertisementService: AdvertisementService,
-        private route: ActivatedRoute,
+        private route: ActivatedRoute,        
         private location: Location) { }
 
     onSubmit(businessForm: NgForm) {
         if (businessForm.valid) {
             console.log(this.business);
-            this.advertisementService.placeUserAdvertisement(this.business).subscribe();
+            this.advertisementService.placeUserAdvertisement(this.business).subscribe(() => {
+                this.goBack();
+            });
         }
     }
 
@@ -36,7 +38,9 @@ export class BusinessEditComponent implements OnInit {
     }
 
     getBusiness(id: number): void {
-        this.businessService.getBusiness(id).subscribe(business => this.business = business);
+        this.businessService.getBusiness(id).subscribe(business => {
+            this.business = business;
+        });
     }
 
     goBack(): void {

@@ -1,4 +1,7 @@
 <div *ngIf="advertisements">
+    <div *ngIf="advertisements.length == 0">
+        <p>Список пуст</p>            
+    </div>
     <div *ngFor="let advertisement of advertisements">
         <advertisement-panel [id]="advertisement.business.id" [shortName]="advertisement.business.shortName"
             [userName]="advertisement.user.FIO" [price]="advertisement.business.cost" [inn]="advertisement.business.inn"

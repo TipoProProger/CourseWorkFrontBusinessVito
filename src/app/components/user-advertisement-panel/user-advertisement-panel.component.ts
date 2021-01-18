@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -23,12 +23,12 @@ export class UserAdvertisementPanelComponent implements OnInit {
     @Input() dislikes: number;
     @Input() disabledStateName: string;
 
+    @Output() onKillEvent: EventEmitter<number> = new EventEmitter<number>();
+
     public score : number;
     public disabledState : boolean;
     
-    constructor(private route: ActivatedRoute,
-        private location: Location,
-        private advertisementService: AdvertisementService) { }
+    constructor(private location: Location) { }
 
     ngOnInit(): void {
         this.score = this.likes - this.dislikes;
@@ -37,7 +37,12 @@ export class UserAdvertisementPanelComponent implements OnInit {
     }
 
     onKill() {
-        this.advertisementService.finishAdvertisement(this.id);      
+        this.sendToParent();
+        //this.advertisementService.finishAdvertisement(this.id);      
+    }
+
+    public sendToParent(): void {
+        this.onKillEvent.emit(this.id);
     }
 
     goBack(): void {

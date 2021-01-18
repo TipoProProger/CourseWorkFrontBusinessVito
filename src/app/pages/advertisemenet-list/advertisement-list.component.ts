@@ -10,12 +10,6 @@ import { AdvertisementService } from "../../services/advertisement.service";
 })
 export class AdvertisementListComponent implements OnInit {
 
-    //all advertisements
-
-    ///TODO
-    // page loading system (last thing)
-    //fuck it till the end
-    
     public advertisements : Advertisement[];
 
     constructor(private advertisementService : AdvertisementService) { }
@@ -24,8 +18,7 @@ export class AdvertisementListComponent implements OnInit {
         this.getAdvertisementList();
     }
 
-    getAdvertisementList(): void {
-        console.log("all resolved advertisements");
+    getAdvertisementList(): void {        
         this.advertisementService.getAdvertisements().subscribe(advertisements => this.advertisements = advertisements);        
     }
 

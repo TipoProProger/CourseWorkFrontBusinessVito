@@ -25,7 +25,9 @@ export class BusinessAddComponent implements OnInit {
     onSubmit(businessForm: NgForm) {
         if (businessForm.valid) {
             console.log(this.business);
-            this.advertisementService.placeUserAdvertisement(this.business).subscribe();
+            this.advertisementService.placeUserAdvertisement(this.business).subscribe(() => {
+                this.goBack();
+            });
         }
     }
     

@@ -4,7 +4,15 @@
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
-        <p>Дата размещения: {{date | date:'dd.MM.y'}}</p>        
+        <div *ngIf="disabledStateName.includes('размещено'); then put_date else put_status"></div> 
+        <ng-template #put_date>
+            <p>Дата размещения: {{date | date:'dd.MM.y'}}</p>
+        </ng-template>
+
+        <ng-template #put_status>
+            <p>Статус объявления: {{disabledStateName}}</p>
+        </ng-template>
+
     </mat-grid-tile>
     
     <mat-grid-tile>
