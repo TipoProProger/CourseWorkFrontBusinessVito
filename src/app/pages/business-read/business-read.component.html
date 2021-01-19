@@ -1,4 +1,7 @@
 <div *ngIf="business">
+    <div *ngIf="error">
+        <p *ngIf="error == true">Ошибка при записи на сервер</p>
+    </div>
     <p>Краткое название: {{business.shortName}}</p>
     <p>Полное название: {{business.fullName}}</p>
     <p>Цена: {{business.cost}}</p>
@@ -97,7 +100,7 @@
 
                 <div>
                     <p>Заключение:</p>
-                    <p>{{business.approvement.info}}></p>
+                    <p>{{business.approvement.info}}</p>
                 </div>
 
                 <button (click)="onSubmitPlace()">Подтвердить размещение</button>

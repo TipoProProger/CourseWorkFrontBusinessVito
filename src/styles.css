@@ -44,3 +44,19 @@ p {
     margin-bottom: 20px;
     background-color: rgb(21, 18, 37);
 }
+
+.mat-form-field-label {
+    color: white !important;
+}
+.mat-input-element {
+    caret-color: white !important;
+}
+input {
+    color: white !important;
+}
+textarea {
+    color: white !important;
+}
+mat-checkbox {
+    color: white !important;
+}

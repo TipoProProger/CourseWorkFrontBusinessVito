@@ -17,7 +17,8 @@ export class BusinessEditComponent implements OnInit {
 
     //редактировать и создать новое объявления
     public business: Business;
-
+    public error : boolean;
+    
     constructor(private businessService: BusinessService,
         private advertisementService: AdvertisementService,
         private route: ActivatedRoute,        
@@ -26,8 +27,12 @@ export class BusinessEditComponent implements OnInit {
     onSubmit(businessForm: NgForm) {
         if (businessForm.valid) {
             console.log(this.business);
-            this.advertisementService.placeUserAdvertisement(this.business).subscribe(() => {
-                this.goBack();
+            this.advertisementService.placeUserAdvertisement(this.business).subscribe(answer => {
+                if (answer == null) {
+                    this.error = true;
+                } else {
+                    this.goBack();
+                }                
             });
         }
     }

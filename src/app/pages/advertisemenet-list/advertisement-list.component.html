@@ -4,7 +4,7 @@
     </div>
     <div *ngFor="let advertisement of advertisements">
         <advertisement-panel [id]="advertisement.business.id" [shortName]="advertisement.business.shortName"
-            [userName]="advertisement.user.FIO" [price]="advertisement.business.cost" [inn]="advertisement.business.inn"
+            [userName]="advertisement.user.fio" [price]="advertisement.business.cost" [inn]="advertisement.business.inn"
             [okopfName]="advertisement.business.okopfDict.name" [date]="advertisement.placeDate"
             [likes]="advertisement.likes" [dislikes]="advertisement.dislikes">
         </advertisement-panel>

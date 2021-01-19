@@ -1,4 +1,7 @@
 <div *ngIf='business'>
+    <div *ngIf="error">        
+        <p *ngIf="error==true">Ошибка при записи на сервер</p>
+    </div>
     <form #businessForm="ngForm" novalidate>
         <mat-grid-list cols="3" rowHeight="70px">
             <mat-grid-tile>
@@ -69,7 +72,7 @@
             </mat-grid-tile>
 
             <mat-grid-tile>
-                <input-field name="busemail" label="Email предприятия" placeholder="Введите email" [required]="false"
+                <input-field name="busemail" label="Email предприятия" placeholder="Введите email" [required]="true"
                     [(ngModel)]="business.busEmail">
                 </input-field>
             </mat-grid-tile>
@@ -133,7 +136,7 @@
             </mat-grid-tile>
 
             <mat-grid-tile>
-                <input-field name="authorizedCapital" label="Уставной капитал" placeholder="Введите уставный капитал"
+                <input-field name="authorizedCapital" label="Уставный капитал" placeholder="Введите уставный капитал"
                     [required]="true" [(ngModel)]="business.businessExtended.authorizedCapital">
                 </input-field>
             </mat-grid-tile>
