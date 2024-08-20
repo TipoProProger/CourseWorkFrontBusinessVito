@@ -1,5 +1,8 @@
 # BusinessVito
 
+Frontend часть проекта курсовой работы по продаже бизнеса (по аналогии с продажей вещей на "Авито").
+Angular + Java Quarkus + Postgres
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
 ## Development server
